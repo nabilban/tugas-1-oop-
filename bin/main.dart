@@ -1,26 +1,31 @@
 import 'package:tugas1/clear_screen.dart';
-import 'package:tugas1/mobil.dart';
-import 'package:tugas1/sewa_mobil.dart';
+import 'package:tugas1/models/mobil.dart';
+import 'package:tugas1/models/motor.dart';
+import 'package:tugas1/sewa_kendaraan.dart';
 import 'dart:io';
 
 void main(List<String> args) {
   //create object
-  SewaMobil sewa = SewaMobil();
+  SewaKendaraan sewa = SewaKendaraan();
   bool isRunning = true;
 
   //predefined data
-  sewa.tambahMobil(Mobil('avanza', '123123', 'Toyota'));
-  sewa.tambahMobil(Mobil('xenia', '123124', 'Daihatsu', 'Rizky'));
-  sewa.tambahMobil(Mobil('ertiga', '123125', 'Suzuki'));
+  sewa.tambahKendaraan(Mobil('xenia', '1', 'Daihatsu', 'Rizky'));
+  sewa.tambahKendaraan(Mobil('ertiga', '2', 'Suzuki'));
+
+  sewa.tambahKendaraan(Motor('Vario', '3', 'Honda'));
+  sewa.tambahKendaraan(Motor('Nmax', '4', 'Yamaha', 'nabil'));
+
   clearScreen();
   //looping
   while (isRunning) {
     //menu
-
+    print('-- Aplikasi Sewa Kendaraan --');
+    print('Selamat datang di aplikasi sewa kendaraan nabil Owo');
     print('Menu:');
-    print('1. Tambah Mobil');
-    print('2. Sewa Mobil');
-    print('3. Tampilkan Mobil');
+    print('1. Tambah Kendaraan');
+    print('2. Sewa Kendaraan');
+    print('3. Tampilkan Kendaraan');
     print('4. Keluar');
     print('Pilih menu: ');
     var menu = int.parse(stdin.readLineSync() ?? '0');
@@ -29,26 +34,38 @@ void main(List<String> args) {
     switch (menu) {
       case 1:
         clearScreen();
-        print('Masukkan nama mobil: ');
+        print('masukan Tipe Kendaraan (motor/mobil): ');
+        String inputType = stdin.readLineSync()!;
+        if (inputType != 'motor' && inputType != 'mobil') {
+          print('Tipe Kendaraan tidak tersedia');
+          clearScreen();
+          break;
+        }
+        print('Masukkan nama Kendaraan: ');
         String inputName = stdin.readLineSync()!;
-        print('Masukkan kode mobil: ');
+        print('Masukkan kode kendaraan: ');
         String inputCode = stdin.readLineSync()!;
-        print('Masukkan merk mobil: ');
-        String inputBrand = stdin.readLineSync()!;
-        sewa.tambahMobil(Mobil(inputName, inputCode, inputBrand));
+        print('Masukkan merk Kendaraan: ');
+        String inputMerk = stdin.readLineSync()!;
+
+        if (inputType == 'motor') {
+          sewa.tambahKendaraan(Motor(inputName, inputCode, inputMerk));
+        }
+        if (inputType == 'mobil') {
+          sewa.tambahKendaraan(Mobil(inputName, inputCode, inputMerk));
+        }
         break;
       case 2:
         clearScreen();
-        sewa.tampilkanMobil();
+        sewa.tampilkanKendaraan();
         print('Masukkan kode mobil: ');
         var kode = stdin.readLineSync()!;
         print('Masukkan nama penyewa: ');
         var namaPenyewa = stdin.readLineSync()!;
-        sewa.sewaMobil(kode, namaPenyewa);
         break;
       case 3:
         clearScreen();
-        sewa.tampilkanMobil();
+        sewa.tampilkanKendaraan();
         break;
       case 4:
         clearScreen();
