@@ -1,24 +1,36 @@
 import 'package:tugas1/kendaraan.dart';
 
+// Class Motor yang merupakan turunan dari Kendaraan
+// Memiliki atribut nama dan namaPenyewa
+// Properti namaPenyewa bersifat private
+// Getter dan setter digunakan untuk mengakses properti private
+// Setter memiliki validasi untuk mengubah namaPenyewa
+// Method infoKendaraan digunakan untuk menampilkan informasi motor yang merupakan override
+// dari method infoKendaraan di class Kendaraan
+
 class Motor extends Kendaraan {
-  final String nama;
+  //atribut
+  String nama;
   String? _namaPenyewa;
 
+  //constructor
   Motor(this.nama, String kode, String merk, [this._namaPenyewa])
       : super(kode, merk);
 
-// Getter for nama
+  // Getter for nama
   String? get namaPenyewa => _namaPenyewa;
 
   // Setter with validation
   set namaPenyewa(String? penyewa) {
     if (_namaPenyewa == null) {
       _namaPenyewa = penyewa;
+      print('motor $nama berhasil disewa oleh $penyewa.');
     } else {
-      print('Motor ini sudah disewa.');
+      print('motor $nama sudah disewa.');
     }
   }
 
+  // Method infoKendaraan to display motor information (override from Kendaraan)
   @override
   void infoKendaraan() {
     print(
