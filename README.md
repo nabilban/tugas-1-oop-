@@ -1,2 +1,7 @@
-A sample command-line application with an entrypoint in `bin/`, library code
-in `lib/`, and example unit test in `test/`.
+Tugas 1 oop
+
+Nama  : M Farhan Nabil
+Kelas : TI K 23
+NIM   : 23051204372
+
+membuat program implementasi dari prinsip prinsip OOP
