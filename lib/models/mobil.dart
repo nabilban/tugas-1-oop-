@@ -9,15 +9,12 @@ import 'package:tugas1/kendaraan.dart';
 //dari method infoKendaraan di class Kendaraan
 class Mobil extends Kendaraan {
   //atribut
-  String nama;
+  String? nama;
   String? _namaPenyewa;
 
   //constructor
   Mobil(this.nama, String kode, String merk, [this._namaPenyewa])
       : super(kode, merk);
-
-  // Getter untuk mendapatkan nama penyewa
-  String? get namaPenyewa => _namaPenyewa;
 
   // Setter untuk mengubah nama penyewa dengan validasi
   set namaPenyewa(String? penyewa) {
@@ -30,6 +27,8 @@ class Mobil extends Kendaraan {
   }
 
   // Method infoKendaraan untuk menampilkan informasi mobil (override dari Kendaraan)
+  // Method ini juga bisa disebut sebagai encapsulation
+  // karena properti ini mengaksess atribute private keluar dari class
   @override
   void infoKendaraan() {
     print(
