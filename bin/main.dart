@@ -14,18 +14,18 @@ void main() {
   //menambahkan kendaraan ke dalam daftarKendaraan menggunakan method tambahKendaraan
   //method ini menerima parameter berupa object Kendaraan (Motor/Mobil)yang merupakan turunan dari Kendaraan
   //sehingga object Motor/Mobil dapat dijadikan sebagai parameter
-  sewa.tambahKendaraan(Mobil('xenia', '1', 'Daihatsu', 'Rizky'));
-  sewa.tambahKendaraan(Mobil('ertiga', '2', 'Suzuki'));
+  sewa.tambahKendaraan(Mobil('1', 'xenia', 'daihatsu', 'Rizky'));
+  sewa.tambahKendaraan(Mobil('2', 'ertiga', 'Suzuki'));
 
-  sewa.tambahKendaraan(Motor('Vario', '3', 'Honda'));
-  sewa.tambahKendaraan(Motor('Nmax', '4', 'Yamaha', 'nabil'));
+  sewa.tambahKendaraan(Motor('3', 'Vario', 'Honda'));
+  sewa.tambahKendaraan(Motor('4', 'Nmax', 'Yamaha', 'nabil'));
 
   clearScreen();
   //looping
   while (isRunning) {
     //menu aplikasi
     print('-- Aplikasi Sewa Kendaraan --');
-    print('Selamat datang di aplikasi sewa kendaraan nabil Owo');
+    print('Selamat datang di aplikasi sewa kendaraan nabil');
     print('Menu:');
     print('1. Tambah Kendaraan');
     print('2. Sewa Kendaraan');
@@ -66,7 +66,7 @@ void main() {
         //case 2 untuk menyewa kendaraan
         clearScreen();
         sewa.tampilkanKendaraan();
-        print('Masukkan kode mobil: ');
+        print('Masukkan kode kendaraan: ');
         var kode = stdin.readLineSync()!;
         print('Masukkan nama penyewa: ');
         var namaPenyewa = stdin.readLineSync()!;

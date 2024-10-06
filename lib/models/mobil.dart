@@ -1,37 +1,29 @@
-import 'package:tugas1/kendaraan.dart';
+import 'package:tugas1/kendaraan.dart'; //import file kendaraan.dart
 
-// Class Mobil yang merupakan turunan dari Kendaraan
-// Memiliki atribut nama dan namaPenyewa
-// Properti namaPenyewa bersifat private
-// Getter dan setter digunakan untuk mengakses properti private
-// Setter memiliki validasi untuk mengubah namaPenyewa
-// Method infoKendaraan digunakan untuk menampilkan informasi mobil yang merupakan override
-//dari method infoKendaraan di class Kendaraan
 class Mobil extends Kendaraan {
-  //atribut
-  String? nama;
+  //atribut private
+  //final digunakan untuk membuat atribut _nama menjadi read-only diinisialisasi sekali
+  final String _nama;
   String? _namaPenyewa;
 
   //constructor
-  Mobil(this.nama, String kode, String merk, [this._namaPenyewa])
-      : super(kode, merk);
+  Mobil(super.kode, super.merk, this._nama, [this._namaPenyewa]);
 
-  // Setter untuk mengubah nama penyewa dengan validasi
+  // Setter untuk mengubah _nama penyewa dengan validasi
   set namaPenyewa(String? penyewa) {
     if (_namaPenyewa == null) {
       _namaPenyewa = penyewa;
-      print('Mobil $nama berhasil disewa oleh $penyewa.');
+      print('Mobil $_nama berhasil disewa oleh $penyewa.');
     } else {
-      print('Mobil $nama sudah disewa.');
+      print('Mobil $_nama sudah disewa.');
     }
   }
 
   // Method infoKendaraan untuk menampilkan informasi mobil (override dari Kendaraan)
-  // Method ini juga bisa disebut sebagai encapsulation
-  // karena properti ini mengaksess atribute private keluar dari class
+  // Method ini juga bisa disebut sebagai getter yang mengakses properti private ketika dipanggil
   @override
   void infoKendaraan() {
     print(
-        'Nama Mobil: $nama, Kode Mobil: $kode, Merk: $merk, Penyewa: ${_namaPenyewa ?? "Belum disewa"}');
+        'Nama Mobil: $_nama, Kode Mobil: $kode, Merk: $merk, Penyewa: ${_namaPenyewa ?? "Belum disewa"}');
   }
 }
